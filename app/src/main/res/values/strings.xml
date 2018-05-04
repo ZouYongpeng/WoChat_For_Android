@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">WoIM</string>
+    <!--login-->
+    <string name="login_input_name">请输入用户名</string>
+    <string name="login_input_password">请输入密码</string>
+    <string name="remember_password">记住密码</string>
+    <string name="auto_login">下次自动登录</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="haveUser">我有账号登录了</string>
+
+    <string name="login_null_name">用户名不能为空</string>
+    <string name="login_null_pass">密码不能为空</string>
+    <string name="logining">登陆中......</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_failure">用户名或密码错误</string>
+    <string name="login_offline">服务器连接失败</string>
+
+    <!--register-->
+    <string name="text_name">用户名*</string>
+    <string name="register_name">长度为3-16的字母+数字</string>
+    <string name="text_nickName">昵称*</string>
+    <string name="register_nickName">长度为2-8位的汉字或字母+数字</string>
+    <string name="text_password">密码*</string>
+    <string name="register_password">长度为6-18的字母+数字</string>
+    <string name="text_passwordAgain">密码确认*</string>
+    <string name="register_passwordAgain">输入相同的密码</string>
+
+</resources>
