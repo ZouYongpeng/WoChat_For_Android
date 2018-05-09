@@ -32,6 +32,20 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     /*LitePal*/
     implementation 'org.litepal.android:core:1.6.1'
+    /*XMPP依赖库*/
+    //smack-core为核心库
+    implementation 'org.igniterealtime.smack:smack-core:4.1.9'
+    //Smack IM.Classes and methods for XMPP-IM (RFC 6121): Roster, Chat and other functionality
+    implementation "org.igniterealtime.smack:smack-im:4.1.9"
+    //Smack for Android. All the required dependencies to run Smack on Android.
+    //smack-android依赖smack-extensions和smack-experimental和smack-tcp
+    implementation "org.igniterealtime.smack:smack-android:4.1.9"
+    implementation "org.igniterealtime.smack:smack-android-extensions:4.1.9"
+    //XMPP connections
+    implementation "org.igniterealtime.smack:smack-tcp:4.1.9"
+    //support for the various XMPP XEPs (Multi-User Chat, PubSub, …) and other XMPP extensions.
+    implementation "org.igniterealtime.smack:smack-extensions:4.1.9"
+    implementation "org.igniterealtime.smack:smack-experimental:4.1.9"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

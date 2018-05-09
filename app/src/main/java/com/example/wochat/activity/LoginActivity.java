@@ -1,5 +1,7 @@
 package com.example.wochat.activity;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.wochat.R;
 import com.example.wochat.bean.User;
+import com.example.wochat.singleClass.SmackManager;
 import com.example.wochat.tools.LoginTool;
 import com.example.wochat.tools.ToastTool;
 import com.example.wochat.ui.ClearEditText;
@@ -56,11 +59,14 @@ public class LoginActivity extends AppCompatActivity {
     public static final int LOGIN_FAILURE=0;//密码错误
     public static final int LOGIN_OFFLINE=2;//服务器连接失败
 
+    public static final int GET_REGISTER_NAME=1;//获取注册的名字
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
         /*获取上次登录的用户名*/
         String formerLogin=LoginTool.getFormerLogin();
         mEditUserName.setText(formerLogin);
@@ -74,7 +80,6 @@ public class LoginActivity extends AppCompatActivity {
             switch (message.what){
                 case LOGIN_SUCCESS://登录成功
                     Log.d("login","success");
-//                    ToastTool.showToast(LoginActivity.this,getString(R.string.login_success));
                     loginSuccess();
                     break;
                 case LOGIN_FAILURE://密码错误
@@ -85,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     mEditUserPass.setText("");
                     break;
                 case LOGIN_OFFLINE://离线状态
-                    Log.d("login","OFFLINE");
+                    Log.d("login","offline");
                     ToastTool.showToast(LoginActivity.this,getString(R.string.login_offline));
                     //改变登录按钮外观
                     mLoginButton.setEnabled(true);//启用登录按钮
@@ -103,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         if (!userName.isEmpty()){//formerLogin!=null && !formerLogin.equals("")
             Boolean isRember=LoginTool.isRememberPass(userName);
             if (isRember){
-                ToastTool.showToast(this,"上个用户记住密码啦");
+//                ToastTool.showToast(this,"上个用户记住密码啦");
                 mRememberPass.setChecked(true);
                 mAutoLogin.setChecked(LoginTool.isAutoLogin(userName));
                 //获取数据库中的密码
@@ -116,8 +121,8 @@ public class LoginActivity extends AppCompatActivity {
                     mEditUserPass.setText(users.get(0).getPassword());
                     /**/
                     if (LoginTool.isAutoLogin(userName) &&!mEditUserPass.getText().toString().isEmpty()){
-                        ToastTool.showToast(this,"自动登录");
-                        mLoginButton.performClick();
+//                        ToastTool.showToast(this,"自动登录");
+//                        mLoginButton.performClick();
                     }
                 }
             }
@@ -139,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                initUserInfo(mEditUserName.getText().toString());
             }
         });
     }
@@ -178,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
             public void run() {
                 Log.d("login","LoginThread--"+userName+":"+userPass);
                 Message message=new Message();
-                message.what=1;//SmackManager.getSmackManager().login(userName,userPass)
+                message.what= SmackManager.getSmackManager().login(userName,userPass);//1
                 Log.d("login","message.what:"+message.what);
                 mHandler.sendMessage(message);
             }
@@ -207,5 +212,25 @@ public class LoginActivity extends AppCompatActivity {
         }
         //跳转至主界面
 
+    }
+
+    @OnClick(R.id.goto_register)
+    public void gotoRegister(){
+        Intent intent=new Intent(this,RegisterActivity.class);
+        startActivityForResult(intent,GET_REGISTER_NAME);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case GET_REGISTER_NAME:
+                if (resultCode==RESULT_OK){
+                    mEditUserName.setText(data.getStringExtra("registerName"));
+                    mEditUserPass.setText("");
+                    mRememberPass.setChecked(false);
+                    mAutoLogin.setChecked(false);
+                }
+                break;
+        }
     }
 }
