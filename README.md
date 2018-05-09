@@ -1,4 +1,6 @@
 # WoChat For Android
+  基于基于Openfire+Smack+Spark的搭建和调试，可在这篇博客查看
+  https://blog.csdn.net/sbsujjbcy/article/details/48734539
 # 登录界面具有以下内容：
       1、自定义的带清除功能的输入框
       2、利用SharedPreferences存储登录界面的数据
