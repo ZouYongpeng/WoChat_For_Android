@@ -211,7 +211,8 @@ public class LoginActivity extends AppCompatActivity {
             loginUser.save();
         }
         //跳转至主界面
-
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.goto_register)

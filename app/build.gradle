@@ -25,6 +25,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
+    /*Material Design*/
+    implementation 'com.android.support:design:26.1.0'
     /*开源项目CircleImageView,将图片圆形化*/
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     /*butterknife*/
