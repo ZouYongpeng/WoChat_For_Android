@@ -11,3 +11,12 @@
       2、使用正则表达式检查、匹配输入的用户名和密码
       3、注册成功将会把用户名返回显示在登录界面
       缺陷：注册时不能编辑用户的头像、注册内容单一，日后改进
+#主界面具有以下内容
+      1、具有NavigationView滑动菜单，内含CircleImageView图片圆形化控件和menu菜单，
+         图片加载使用glide库。
+      2、底部栏由Fragment+FragmentTabHost++ViewPager实现
+         Fragment：存放不同选项的页面内容
+         FragmentTabHost：点击切换选项卡
+         ViewPager：实现页面的左右滑动效果
+         
+
