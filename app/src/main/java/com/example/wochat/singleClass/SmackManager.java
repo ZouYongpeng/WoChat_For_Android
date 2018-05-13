@@ -28,7 +28,7 @@ public class SmackManager {
     * 2、如果电脑连接校园WIFI，地址为192.168.155.1
     * 3、因为服务器连接的是内网，真机调试时使用数据连接的真机不能连接服务器，需要通过电脑热点连接
     * */
-    private static final String HOST="192.168.155.1";
+    private static final String HOST="116.57.53.134";
 
     /*客户端到服务器端口5222
     * 用于客户端以标准方式连接到服务器。 此端口使用纯文本方式建立连接*/

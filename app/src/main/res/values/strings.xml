@@ -45,6 +45,14 @@
     <string name="toolbar_title">WoChat</string>
     <string name="toolbar_add_user">添加好友</string>
     <string name="toolbar_create_group">发起群聊</string>
+    <!--message_fragment-->
+    <string name="fragment_message">这是消息界面</string>
+    <string name="fragment_message_tab">消息</string>
+
+    <!--message_friends-->
+    <string name="fragment_friends">这是联系人界面</string>
+    <string name="fragment_friends_tab">好友</string>
+    <!--tab-->
 
 
 </resources>

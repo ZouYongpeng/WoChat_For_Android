@@ -211,7 +211,8 @@ public class LoginActivity extends AppCompatActivity {
             loginUser.save();
         }
         //跳转至主界面
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent=MainActivity.logonToMain(this,userName);
+//        Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
